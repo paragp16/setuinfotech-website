@@ -9,6 +9,178 @@ content="Setu Infotech provides software development, C/C++, SQL, Pro*C, mobile 
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="setu-favicon.png">
 </head>
+  <!-- Setu Infotech Chatbot -->
+<style>
+.setu-chat-button {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 58px;
+  height: 58px;
+  border: none;
+  border-radius: 50%;
+  background: #1769e0;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  z-index: 9999;
+}
+
+.setu-chat-box {
+  display: none;
+  position: fixed;
+  right: 22px;
+  bottom: 92px;
+  width: 340px;
+  max-width: calc(100vw - 40px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0,0,0,.25);
+  overflow: hidden;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.setu-chat-header {
+  background: #1769e0;
+  color: white;
+  padding: 16px;
+  font-weight: bold;
+}
+
+.setu-chat-header small {
+  display: block;
+  margin-top: 4px;
+  opacity: .85;
+  font-weight: normal;
+}
+
+.setu-chat-messages {
+  height: 280px;
+  padding: 14px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.setu-message {
+  background: #f1f4f8;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.setu-message.bot {
+  margin-right: 25px;
+}
+
+.setu-message.user {
+  background: #1769e0;
+  color: white;
+  margin-left: 25px;
+}
+
+.setu-chat-options {
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.setu-chat-options button {
+  width: 100%;
+  margin: 4px 0;
+  padding: 9px;
+  border: 1px solid #1769e0;
+  border-radius: 8px;
+  background: white;
+  color: #1769e0;
+  cursor: pointer;
+}
+
+.setu-chat-options button:hover {
+  background: #1769e0;
+  color: white;
+}
+</style>
+
+<button class="setu-chat-button" onclick="toggleSetuChat()">💬</button>
+
+<div class="setu-chat-box" id="setuChatBox">
+
+  <div class="setu-chat-header">
+    Setu Infotech
+    <small>How can we help you?</small>
+  </div>
+
+  <div class="setu-chat-messages" id="setuChatMessages">
+    <div class="setu-message bot">
+      Hello! 👋 Welcome to Setu Infotech.<br><br>
+      What would you like to know?
+    </div>
+  </div>
+
+  <div class="setu-chat-options">
+    <button onclick="setuAnswer('services')">Our Services</button>
+    <button onclick="setuAnswer('web')">Web Development & Hosting</button>
+    <button onclick="setuAnswer('mobile')">Mobile Applications</button>
+    <button onclick="setuAnswer('legacy')">Legacy Application Support</button>
+    <button onclick="setuAnswer('contact')">Contact Setu Infotech</button>
+  </div>
+
+</div>
+
+<script>
+function toggleSetuChat() {
+  const box = document.getElementById("setuChatBox");
+
+  if (box.style.display === "block") {
+    box.style.display = "none";
+  } else {
+    box.style.display = "block";
+  }
+}
+
+function setuAnswer(type) {
+
+  const messages = document.getElementById("setuChatMessages");
+
+  let question = "";
+  let answer = "";
+
+  if (type === "services") {
+    question = "What services do you provide?";
+    answer = "Setu Infotech provides C/C++, SQL & Database Solutions, Pro*C Development, Legacy Application Support, Excel/VBA Automation, Business Process Automation, Mobile Application Development, Web Page Development & Hosting, and Technical Consulting.";
+  }
+
+  if (type === "web") {
+    question = "Do you develop websites?";
+    answer = "Yes. Setu Infotech provides Web Page Development & Hosting services for businesses, including responsive website development and deployment.";
+  }
+
+  if (type === "mobile") {
+    question = "Do you develop mobile applications?";
+    answer = "Yes. We develop custom mobile applications, particularly for Android and business workflows.";
+  }
+
+  if (type === "legacy") {
+    question = "Do you support old applications?";
+    answer = "Yes. Setu Infotech provides maintenance and support for legacy C, C++, Pro*C, SQL and database-driven applications.";
+  }
+
+  if (type === "contact") {
+    question = "How can I contact Setu Infotech?";
+    answer = "You can contact Setu Infotech at support@setuinfotech.in or call +91 98909 99485.";
+  }
+
+  messages.innerHTML +=
+    '<div class="setu-message user">' + question + '</div>';
+
+  messages.innerHTML +=
+    '<div class="setu-message bot">' + answer + '</div>';
+
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
 <body>
 <header class="header">
   <div class="container nav">
